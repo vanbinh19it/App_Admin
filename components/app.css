@@ -1,0 +1,13 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.wrapper {
+  background-color: #f8f9fa;
+}
+
+h1 {
+  color: #343a40;
+  font-size: 24px;
+}

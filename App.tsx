@@ -1,22 +1,23 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import VocabularyManagement from "./components/dashboard";
+// import { StyleSheet, View, Dimensions } from "react-native";
+// import VocabularyManagement from "./components/dashboard";
 
-const App = () => {
-  return (
-    <View>
-      <VocabularyManagement />
-    </View>
-  );
-};
+// const windowHeight = Dimensions.get("window").height;
 
-export default App;
+// const App = () => {
+//   return (
+//     <View style={styles.container}>
+//       <VocabularyManagement />
+//     </View>
+//   );
+// };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+// export default App;
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+// });
