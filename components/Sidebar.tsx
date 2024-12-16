@@ -192,10 +192,70 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background-color: white;
+  background-color: #2c3e50;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
+  color: #ffffff;
+
+  h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    input {
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #34495e;
+      background-color: #34495e;
+      color: #ffffff;
+
+      &::placeholder {
+        color: #bdc3c7;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #3498db;
+      }
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &[type="submit"] {
+        background-color: #3498db;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+      }
+
+      &[type="button"] {
+        background-color: #34495e;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #2c3e50;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+  }
 `;
 const AddButton = styled.button`
   background: none;
@@ -206,16 +266,21 @@ const AddButton = styled.button`
   padding: 5px;
   margin-left: 10px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #34495e;
+    transform: scale(1.2);
+    font-size: 24px;
+    font-weight: bold;
   }
 `;
 const VocabularyWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  color: #ffffff;
 
   &:hover ${AddButton} {
     opacity: 1;
