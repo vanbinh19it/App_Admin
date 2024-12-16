@@ -155,74 +155,76 @@ const VocabCategory: React.FC = () => {
 
   return (
     <div>
-      <CategoryHeader>
-        <h1>{category}</h1>
-        <ButtonContainer>
-          <IconButton onClick={() => setShowEditCategoryModal(true)}>
-            <FaEdit />
-          </IconButton>
-          <IconButton onClick={() => setShowDeleteCategoryModal(true)}>
-            <FaTrash />
-          </IconButton>
-        </ButtonContainer>
-      </CategoryHeader>
-      {/* <h1>{category}</h1> */}
-      <Button onClick={() => setShowModal(true)}>+</Button>
-      {showModal && (
-        <AddVocabularyModal
-          onClose={() => setShowModal(false)}
-          onAdd={handleAddVocabulary}
-        />
-      )}
-      {editItem && (
-        <EditVocabularyModal
-          onClose={() => setEditItem(null)}
-          onUpdate={handleUpdate}
-          item={editItem}
-        />
-      )}
-      <VocabularyList>
-        {vocabulary.map((item, index) => (
-          <VocabularyItem key={item._id || index}>
-            <Image
-              src={`http://${IPv4Address}:3005${item.image}`}
-              alt={item.word}
-            />
-            <Word>{item.word}</Word>
-            <Pronunciation>{item.pronunciation}</Pronunciation>
-            <Meaning>{item.meaning}</Meaning>
-            <Example>{item.example}</Example>
-            <ButtonContainer>
-              <IconButton onClick={() => handleEdit(item)}>
-                <FaEdit />
-              </IconButton>
-              <IconButton onClick={() => handleDeleteClick(item._id)}>
-                <FaTrash />
-              </IconButton>
-            </ButtonContainer>
-          </VocabularyItem>
-        ))}
-      </VocabularyList>
-      {showDeleteModal && (
-        <DeleteConfirmationModal
-          onConfirm={handleDeleteConfirm}
-          onCancel={handleDeleteCancel}
-        />
-      )}
-      {showEditCategoryModal && (
-        <EditCategoryModal
-          currentName={category || ""}
-          onClose={() => setShowEditCategoryModal(false)}
-          onUpdate={handleEditCategory}
-        />
-      )}
+      <Container>
+        <CategoryHeader>
+          <h1>{category}</h1>
+          <ButtonContainer>
+            <IconButton onClick={() => setShowEditCategoryModal(true)}>
+              <FaEdit />
+            </IconButton>
+            <IconButton onClick={() => setShowDeleteCategoryModal(true)}>
+              <FaTrash />
+            </IconButton>
+          </ButtonContainer>
+        </CategoryHeader>
+        {/* <h1>{category}</h1> */}
+        <Button onClick={() => setShowModal(true)}>+</Button>
+        {showModal && (
+          <AddVocabularyModal
+            onClose={() => setShowModal(false)}
+            onAdd={handleAddVocabulary}
+          />
+        )}
+        {editItem && (
+          <EditVocabularyModal
+            onClose={() => setEditItem(null)}
+            onUpdate={handleUpdate}
+            item={editItem}
+          />
+        )}
+        <VocabularyList>
+          {vocabulary.map((item, index) => (
+            <VocabularyItem key={item._id || index}>
+              <Image
+                src={`http://${IPv4Address}:3005${item.image}`}
+                alt={item.word}
+              />
+              <Word>{item.word}</Word>
+              <Pronunciation>{item.pronunciation}</Pronunciation>
+              <Meaning>{item.meaning}</Meaning>
+              <Example>{item.example}</Example>
+              <ButtonContainer>
+                <IconButton onClick={() => handleEdit(item)}>
+                  <FaEdit />
+                </IconButton>
+                <IconButton onClick={() => handleDeleteClick(item._id)}>
+                  <FaTrash />
+                </IconButton>
+              </ButtonContainer>
+            </VocabularyItem>
+          ))}
+        </VocabularyList>
+        {showDeleteModal && (
+          <DeleteConfirmationModal
+            onConfirm={handleDeleteConfirm}
+            onCancel={handleDeleteCancel}
+          />
+        )}
+        {showEditCategoryModal && (
+          <EditCategoryModal
+            currentName={category || ""}
+            onClose={() => setShowEditCategoryModal(false)}
+            onUpdate={handleEditCategory}
+          />
+        )}
 
-      {showDeleteCategoryModal && (
-        <DeleteConfirmationModal
-          onConfirm={handleDeleteCategory}
-          onCancel={() => setShowDeleteCategoryModal(false)}
-        />
-      )}
+        {showDeleteCategoryModal && (
+          <DeleteConfirmationModal
+            onConfirm={handleDeleteCategory}
+            onCancel={() => setShowDeleteCategoryModal(false)}
+          />
+        )}
+      </Container>
     </div>
   );
 };
@@ -385,9 +387,9 @@ const VocabularyList = styled.ul`
 const VocabularyItem = styled.li`
   margin: 20px 0;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #333;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #2c2c2c;
 `;
 
 const Image = styled.img`
@@ -399,22 +401,29 @@ const Image = styled.img`
 const Word = styled.h2`
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
 `;
 
 const Pronunciation = styled.p`
   font-style: italic;
-  color: #666;
+  color: #cccccc;
 `;
 
 const Meaning = styled.p`
   font-size: 18px;
-  color: #444;
+  color: #ffffff;
 `;
 
 const Example = styled.p`
   font-size: 16px;
-  color: #555;
+  color: #bbbbbb;
+`;
+
+const Container = styled.div`
+  margin-top: 60px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  min-height: 100vh;
 `;
 
 export default VocabCategory;

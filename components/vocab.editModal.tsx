@@ -119,22 +119,38 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background-color: white;
+  position: relative;
+  background-color: #2c3e50;
   padding: 20px;
   border-radius: 5px;
   width: 400px;
   max-width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
 `;
 
 const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
   position: absolute;
   top: 10px;
   right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
   cursor: pointer;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #34495e;
+    color: #e74c3c;
+    transform: scale(1.1);
+  }
 `;
 
 const Form = styled.form`
@@ -145,8 +161,19 @@ const Form = styled.form`
 const Input = styled.input`
   margin: 5px 0;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #34495e;
   border-radius: 5px;
+  background-color: #34495e;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #bdc3c7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3498db;
+  }
 `;
 
 const Button = styled.button`
@@ -161,6 +188,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: #2980b9;
+    transform: scale(1.02);
   }
 `;
 
