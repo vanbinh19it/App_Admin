@@ -11,7 +11,6 @@ import EditQuizModal from "./listenling.editQuiz";
 import AddFillBlanksModal from "./listening.addFillBlanks";
 import EditFillBlanksModal from "./listening.editFillBlanks";
 
-
 interface FillBlank {
   sentence: string;
   missingWord: string;
