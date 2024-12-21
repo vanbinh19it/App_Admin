@@ -254,7 +254,6 @@ const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={onClose}>×</CloseButton>
         <h2>Edit Category</h2>
         <Form onSubmit={handleSubmit}>
           <Input
@@ -263,7 +262,12 @@ const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
             onChange={(e) => setNewName(e.target.value)}
             required
           />
-          <Button type="submit">Update</Button>
+          <ButtonGroup>
+            <UpdateButton type="submit">Update</UpdateButton>
+            <CancelEditButton type="button" onClick={onClose}>
+              Cancel
+            </CancelEditButton>
+          </ButtonGroup>
         </Form>
       </ModalContent>
     </ModalOverlay>
@@ -424,6 +428,25 @@ const Container = styled.div`
   padding: 20px;
   background-color: #1a1a1a;
   min-height: 100vh;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+`;
+
+const UpdateButton = styled(Button)`
+  margin: 0;
+`;
+
+const CancelEditButton = styled(Button)`
+  margin: 0;
+  background-color: #e74c3c;
+  &:hover {
+    background-color: #c0392b;
+  }
 `;
 
 export default VocabCategory;

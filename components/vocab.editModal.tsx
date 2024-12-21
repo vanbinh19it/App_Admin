@@ -58,7 +58,6 @@ const EditVocabularyModal: React.FC<EditVocabularyModalProps> = ({
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={onClose}>×</CloseButton>
         <h2>Edit Vocabulary</h2>
         <Form onSubmit={handleSubmit}>
           <Input
@@ -99,7 +98,12 @@ const EditVocabularyModal: React.FC<EditVocabularyModalProps> = ({
             onChange={handleInputChange}
             required
           />
-          <Button type="submit">Update Word</Button>
+          <ButtonGroup>
+            <SubmitButton type="submit">Update Word</SubmitButton>
+            <CancelButton type="button" onClick={onClose}>
+              Cancel
+            </CancelButton>
+          </ButtonGroup>
         </Form>
       </ModalContent>
     </ModalOverlay>
@@ -162,7 +166,19 @@ const Input = styled.input`
   margin: 5px 0;
   padding: 10px;
   border: 1px solid #34495e;
+  border: 1px solid #34495e;
   border-radius: 5px;
+  background-color: #34495e;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #bdc3c7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3498db;
+  }
   background-color: #34495e;
   color: #ffffff;
 
@@ -188,8 +204,28 @@ const Button = styled.button`
 
   &:hover {
     background-color: #2980b9;
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+`;
+
+const SubmitButton = styled(Button)`
+  background-color: #3498db;
+  &:hover {
+    background-color: #2980b9;
     transform: scale(1.02);
   }
 `;
 
+const CancelButton = styled(Button)`
+  background-color: #e74c3c;
+  &:hover {
+    background-color: #c0392b;
+  }
+`;
 export default EditVocabularyModal;

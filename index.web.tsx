@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import VocabCategory from "./components/vocab.category";
+import ListeningCategory from "./components/listening.category";
 import Header from "./components/Header";
 import styled from "styled-components";
 
@@ -40,6 +41,7 @@ root.render(
           <MainContent>
             <Routes>
               <Route path="/vocabulary/:category" element={<VocabCategory />} />
+              <Route path="/listening/:topic" element={<ListeningCategory />} />
             </Routes>
           </MainContent>
         </ContentWrapper>
