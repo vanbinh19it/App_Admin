@@ -54,6 +54,8 @@ const AddCategoryModal: React.FC<{
 
 const SideBar: React.FC = () => {
   const [categories, setCategories] = useState<{ [key: string]: any[] }>({});
+  const [listeningTopics, setListeningTopics] = useState<string[]>([]);
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
@@ -65,21 +67,23 @@ const SideBar: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://${IPv4Address}:3005/api/vocabulary/categories`
-        );
-        setCategories(response.data);
+        const [vocabularyResponse, listeningResponse] = await Promise.all([
+          axios.get(`http://${IPv4Address}:3005/api/vocabulary/categories`),
+          axios.get(`http://${IPv4Address}:3005/api/listening`),
+        ]);
+        setCategories(vocabularyResponse.data);
+        setListeningTopics(listeningResponse.data.topics);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching categories:", error);
-        setError("Error fetching categories");
+        console.error("Error fetching data:", error);
+        setError("Error fetching data");
         setLoading(false);
       }
     };
 
-    fetchCategories();
+    fetchData();
   }, []);
 
   if (loading) {
@@ -139,12 +143,14 @@ const SideBar: React.FC = () => {
             </StyledNavItem>
           ))}
         </CNavGroup>
-        <CNavGroup toggler="Charts">
-          <StyledNavItem>
-            <StyledNavLink as={Link} to="/charts">
-              Charts
-            </StyledNavLink>
-          </StyledNavItem>
+        <CNavGroup toggler="Listening">
+          {listeningTopics.map((topic) => (
+            <StyledNavItem key={topic}>
+              <StyledNavLink as={Link} to={`/listening/${topic}`}>
+                {topic}
+              </StyledNavLink>
+            </StyledNavItem>
+          ))}
         </CNavGroup>
         <CNavGroup toggler="Icons">
           <StyledNavItem>
