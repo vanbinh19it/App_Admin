@@ -36,4 +36,5 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-configs/config.ts
+# Config files
+/configs/config.ts
