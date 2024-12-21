@@ -133,6 +133,30 @@ const ModalContent = styled.div`
   color: #ffffff;
 `;
 
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #34495e;
+    color: #e74c3c;
+    transform: scale(1.1);
+  }
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -142,7 +166,19 @@ const Input = styled.input`
   margin: 5px 0;
   padding: 10px;
   border: 1px solid #34495e;
+  border: 1px solid #34495e;
   border-radius: 5px;
+  background-color: #34495e;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #bdc3c7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3498db;
+  }
   background-color: #34495e;
   color: #ffffff;
 
@@ -168,7 +204,6 @@ const Button = styled.button`
 
   &:hover {
     background-color: #2980b9;
-    transform: scale(1.02);
   }
 `;
 
@@ -183,6 +218,7 @@ const SubmitButton = styled(Button)`
   background-color: #3498db;
   &:hover {
     background-color: #2980b9;
+    transform: scale(1.02);
   }
 `;
 
