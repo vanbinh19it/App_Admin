@@ -152,18 +152,6 @@ const SideBar: React.FC = () => {
             </StyledNavItem>
           ))}
         </CNavGroup>
-        <CNavGroup toggler="Icons">
-          <StyledNavItem>
-            <StyledNavLink as={Link} to="/icons">
-              Icons
-            </StyledNavLink>
-          </StyledNavItem>
-        </CNavGroup>
-        <StyledNavItem>
-          <StyledNavLink as={Link} to="/notifications">
-            Notifications
-          </StyledNavLink>
-        </StyledNavItem>
       </CSidebarNav>
       {showAddCategoryModal && (
         <AddCategoryModal
@@ -306,6 +294,7 @@ const StyledNavItem = styled(CNavItem)`
   margin: 5px 0;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  padding-left: 20px; // Add indentation
 
   &:hover {
     background-color: #34495e;
@@ -315,9 +304,18 @@ const StyledNavItem = styled(CNavItem)`
 const StyledNavLink = styled(CNavLink)`
   color: #ecf0f1;
   padding: 10px 15px;
+  padding-left: 25px; // Increase left padding for indentation
   display: block;
   text-decoration: none;
   transition: color 0.3s ease;
+  position: relative; // Add for nested indication
+
+  &:before {
+    content: "•"; // Add bullet point
+    position: absolute;
+    left: 10px;
+    color: #3498db;
+  }
 
   &:hover {
     color: #3498db;

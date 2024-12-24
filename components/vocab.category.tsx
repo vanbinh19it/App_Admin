@@ -189,10 +189,12 @@ const VocabCategory: React.FC = () => {
                 src={`http://${IPv4Address}:3005${item.image}`}
                 alt={item.word}
               />
-              <Word>{item.word}</Word>
-              <Pronunciation>{item.pronunciation}</Pronunciation>
-              <Meaning>{item.meaning}</Meaning>
-              <Example>{item.example}</Example>
+              <ContentSection>
+                <Word>{item.word}</Word>
+                <Pronunciation>{item.pronunciation}</Pronunciation>
+                <Meaning>{item.meaning}</Meaning>
+                <Example>{item.example}</Example>
+              </ContentSection>
               <ButtonContainer>
                 <IconButton onClick={() => handleEdit(item)}>
                   <FaEdit />
@@ -300,16 +302,11 @@ const CategoryHeader = styled.div`
   margin-bottom: 20px;
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
+const ContentSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -351,8 +348,8 @@ const CancelButton = styled.button`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  gap: 8px;
+  align-self: flex-start;
 `;
 
 const IconButton = styled.button`
@@ -389,37 +386,45 @@ const VocabularyList = styled.ul`
 `;
 
 const VocabularyItem = styled.li`
-  margin: 20px 0;
-  padding: 20px;
+  margin: 10px 0;
+  padding: 15px;
   border: 1px solid #333;
   border-radius: 5px;
   background-color: #2c2c2c;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 20px;
+  align-items: start;
 `;
 
 const Image = styled.img`
-  max-width: 100px;
-  height: auto;
-  margin-right: 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
 `;
 
 const Word = styled.h2`
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   color: #ffffff;
 `;
 
 const Pronunciation = styled.p`
+  margin: 2px 0;
   font-style: italic;
   color: #cccccc;
 `;
 
 const Meaning = styled.p`
-  font-size: 18px;
+  margin: 2px 0;
+  font-size: 16px;
   color: #ffffff;
 `;
 
 const Example = styled.p`
-  font-size: 16px;
+  margin: 2px 0;
+  font-size: 18px;
   color: #bbbbbb;
 `;
 
